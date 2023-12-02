@@ -76,7 +76,7 @@ onMounted(() => {
 .rectangle-1 {
     display: flex;
     justify-content: center; 
-    align-items: center;
+    align-items: last baseline;
     width: 100%;
     height: 100%;
     /* background-color: green; */
@@ -94,10 +94,10 @@ onMounted(() => {
     display: flex;
     flex-direction: column;
     background-color: wheat;
-    width: 92%;
-    height: 65%;
+    width: 100%;
+    height: 80%;
     padding: 8px;
-    border-radius: 20px;
+    border-radius: 5px;
     outline: 2px solid rgb(119, 62, 1);
 }
 
@@ -119,6 +119,6 @@ onMounted(() => {
     align-items: center;
     width: 100%;
     height: 80%;
-    font-size: 32px;
+    font-size: 35px;
 }
 </style>

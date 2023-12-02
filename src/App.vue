@@ -80,7 +80,7 @@ header {
   height: 83vh;
   width: 58%;
   padding: 10px;
-  /* background-color: red; */
+  background-color: rgba(255, 255, 255, 0.567);
 }
 
 
@@ -92,7 +92,7 @@ header {
 
   height: 83vh;
   width: 38%;
-  /* background-color: blue; */
+  background-color: rgba(165, 165, 169, 0.488);
 }
 
 
