@@ -8,31 +8,49 @@ const rain = ref('');
 const clouds = ref('');
 const humidity = ref('');
 const wind = ref('');
+const counter = ref(getSecondsInDay());
 
-const fetchApi = (API) => {
+function fetchApi(API) {
     try {
         fetch(API)
             .then(response => response.json())
             .then(data => {
 
                 humidity.value = data.current.relative_humidity_2m
-                wind.value = data.current.wind_speed_10m   
+                wind.value = data.current.wind_speed_10m
                 temperature.value = data.current.temperature_2m
 
                 day.value = data.current.is_day
                 clouds.value = data.current.cloud_cover
                 rain.value = data.current.rain
 
-        
+
 
             })
     } catch (error) {
         console.error(error);
     }
+};
+
+function getSecondsInDay() {
+  const now = new Date();
+  return now.getHours() * 3600 + now.getMinutes() * 60 + now.getSeconds();
 }
+
+const counterDigits = computed(() => {
+    const counterString = counter.value.toString().padStart(9, '0');
+    return counterString.split('');
+});
+
 
 onMounted(() => {
     fetchApi(urlAPI);
+    setInterval(() => {
+    counter.value++;
+    if (counter.value >= 86400) {  
+      counter.value = 0;
+    }
+  }, 1000);
 })
 
 </script>
@@ -41,11 +59,15 @@ onMounted(() => {
     <div class="weather-rectangle">
         <div class="weather-rome">
             <div class="col-1">
-                <img class="weather-icon" src="../assets/img/sun.png" alt="sun" v-if="day === 1 && rain === 0 & clouds <20" />
-                <img class="weather-icon" src="../assets/img/moon.png" alt="moon" v-else-if="day === 0 && rain === 0 && clouds <20" />
-                <img class="weather-icon" src="../assets/img/moon-cloudy.png" alt="moon-cloudy" v-else-if="day === 0 && rain === 0 && clouds >= 20 && clouds < 60" />
+                <img class="weather-icon" src="../assets/img/sun.png" alt="sun"
+                    v-if="day === 1 && rain === 0 & clouds < 20" />
+                <img class="weather-icon" src="../assets/img/moon.png" alt="moon"
+                    v-else-if="day === 0 && rain === 0 && clouds < 20" />
+                <img class="weather-icon" src="../assets/img/moon-cloudy.png" alt="moon-cloudy"
+                    v-else-if="day === 0 && rain === 0 && clouds >= 20 && clouds < 60" />
                 <img class="weather-icon" src="../assets/img/raining.png" alt="rain" v-else-if="rain === 1" />
-                <img class="weather-icon" src="../assets/img/sun-cloudy.png" alt="sun-cloudy" v-else-if="day === 1 && rain === 0 && clouds >= 20 && clouds < 60" />
+                <img class="weather-icon" src="../assets/img/sun-cloudy.png" alt="sun-cloudy"
+                    v-else-if="day === 1 && rain === 0 && clouds >= 20 && clouds < 60" />
                 <img class="weather-icon" src="../assets/img/clouds.png" alt="clouds" v-else-if="clouds >= 60" />
                 <h4> Humidity: {{ humidity }} %</h4>
                 <h4> Wind Speed: {{ wind }} km/h</h4>
@@ -57,17 +79,9 @@ onMounted(() => {
             </div>
         </div>
         <div class="weather-tick">
-            <h1 class="counter">
-                <span>0</span>
-                <span>0</span>
-                <span>0</span>
-                <span>0</span>
-                <span>0</span>
-                <span>0</span>
-                <span>0</span>
-                <span>0</span>
-                <span>0</span>
-            </h1>
+            <div v-for="(digit, index) in counterDigits" :key="index" class="digit">
+                <h1>{{ digit }}</h1>
+            </div>
         </div>
     </div>
 </template>
@@ -87,7 +101,7 @@ onMounted(() => {
     width: 100%;
 }
 
-.col-1{
+.col-1 {
     width: 35%;
     height: 100%;
 }
@@ -109,7 +123,7 @@ onMounted(() => {
 }
 
 .weather-temperature {
-    font-size: 50px;
+    font-size: 60px;
 }
 
 .weather-city {
@@ -124,6 +138,14 @@ onMounted(() => {
     width: 100%;
 }
 
+.counter {
+  display: flex;
+}
 
+.digit {
+  padding: 10px;
+  border: 1px solid #ccc;
+  margin-right: 5px;
+}
 
 </style>

@@ -7,7 +7,7 @@ const monthEnergy = ref('');
 const todayEnergy = ref('');
 const leftTimeEnergy = ref('');
 
-const fetchAPI = () => {
+function fetchAPI() {
     try {
         fetch('https://ott-fogliata.github.io/vuejs-s2i-repository/solar-panels.json#')
         .then(response => response.json())
@@ -16,6 +16,8 @@ const fetchAPI = () => {
             monthEnergy.value = data['month-energy'];
             todayEnergy.value = data['today-energy'];
             leftTimeEnergy.value = data['left-time-energy'];
+
+
         })
     } catch (error) {
         console.error(error);

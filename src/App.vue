@@ -67,7 +67,7 @@ header {
 .main-content {
   height: 93vh;
   display: flex;
-  justify-content: space-between;
+  justify-content: space-evenly;
   align-items: center;
   padding: 20px;
 }
@@ -80,7 +80,7 @@ header {
   height: 83vh;
   width: 58%;
   padding: 10px;
-  background-color: rgba(255, 255, 255, 0.567);
+  /* background-color: rgba(255, 255, 255, 0.567); */
 }
 
 
@@ -92,7 +92,7 @@ header {
 
   height: 83vh;
   width: 38%;
-  background-color: rgba(165, 165, 169, 0.488);
+  /* background-color: rgba(165, 165, 169, 0.488); */
 }
 
 
