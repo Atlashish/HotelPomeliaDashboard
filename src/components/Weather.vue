@@ -69,8 +69,8 @@ onMounted(() => {
                 <img class="weather-icon" src="../assets/img/sun-cloudy.png" alt="sun-cloudy"
                     v-else-if="day === 1 && rain === 0 && clouds >= 20 && clouds < 60" />
                 <img class="weather-icon" src="../assets/img/clouds.png" alt="clouds" v-else-if="clouds >= 60" />
-                <h4> Humidity: {{ humidity }} %</h4>
-                <h4> Wind Speed: {{ wind }} km/h</h4>
+                <h4 id="humidity"> 💧Humidity: {{ humidity }}%</h4>
+                <h4 id="wind"> 🍃Wind Speed: {{ wind }}km/h</h4>
 
             </div>
             <div class="col-2">
@@ -92,7 +92,13 @@ onMounted(() => {
     width: 90%;
     background-color: rgba(158, 158, 158, 0.701);
     padding: 10px;
-    border-radius: 10px;
+    border-radius: 5px;
+    border: 2px solid rgb(53, 53, 53);
+    -webkit-box-shadow: 5px 5px 7px 0px rgba(0, 0, 0, 0.6);
+    box-shadow: 5px 5px 7px 0px rgba(0, 0, 0, 0.6);
+}
+.weather-rectangle:hover{
+    cursor: default;
 }
 
 .weather-rome {
@@ -104,7 +110,8 @@ onMounted(() => {
 .col-1 {
     width: 35%;
     height: 100%;
-    font-size: 15px;
+    font-size: 13px;
+    
 }
 
 .col-2 {
@@ -115,6 +122,16 @@ onMounted(() => {
 .weather-icon {
     width: 100px;
     margin-bottom: 10px;
+}
+
+#humidity{
+    color: rgb(0, 0, 0);
+    font-style: italic;
+}
+
+#wind{
+    color: rgb(0, 0, 0);
+    font-style: italic;
 }
 
 .col-2 {

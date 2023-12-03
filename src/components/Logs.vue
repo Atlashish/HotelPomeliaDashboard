@@ -32,7 +32,7 @@ const logTypeClass = (type) => {
 
 onMounted(() =>{
     fetchAPI();
-    logTypeClass(type);
+    logTypeClass();
 });
 </script>
 
@@ -53,16 +53,25 @@ onMounted(() =>{
 .log-rectangle {
     height: 45%;
     width: 100%;
-    background-color: #df816ca8;
+    background-color: #df816cd3;
     color: rgb(0, 0, 0);
     padding: 5px;
-    border-radius: 10px;
+    border-radius: 5px;
+    border: 2px solid rgb(149, 2, 2);
+    -webkit-box-shadow: 5px 5px 7px 0px rgba(0, 0, 0, 0.6);
+    box-shadow: 5px 5px 7px 0px rgba(0, 0, 0, 0.6);
+}
+
+.log-rectangle{
+    cursor: default;
 }
 
 .title-row {
     display: flex;
     justify-content: center;
     font-size: 14px;
+    font-style: italic;
+    color: rgb(0, 0, 0);
 }
 
 .row {

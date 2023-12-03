@@ -33,6 +33,8 @@ import Logs from './components/Logs.vue';
 </template>
 
 <style scoped>
+
+
 body {
   background-image: url('./assets/img/pexels-ákos-szabó-440731.jpg');
   background-size: cover;
@@ -47,9 +49,6 @@ header {
   font-family: 'Ephesis', cursive;
 }
 
-#dashboard{
-  font-family: 'Noto Sans Tangsa', sans-serif;
-}
 
 .logo-container {
   height: 100%;
@@ -106,7 +105,7 @@ header {
 
   body{
     background-image: none;
-    background-color: skyblue;
+    background-color: #638fdc;
     height: 100%;
   }
   .main-content{

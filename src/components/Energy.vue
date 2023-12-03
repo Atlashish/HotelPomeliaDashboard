@@ -10,23 +10,23 @@ const leftTimeEnergy = ref('');
 function fetchAPI() {
     try {
         fetch('https://ott-fogliata.github.io/vuejs-s2i-repository/solar-panels.json#')
-        .then(response => response.json())
-        .then(data => {
-            powerProduction.value = data['power-production'];
-            monthEnergy.value = data['month-energy'];
-            todayEnergy.value = data['today-energy'];
-            leftTimeEnergy.value = data['left-time-energy'];
+            .then(response => response.json())
+            .then(data => {
+                powerProduction.value = data['power-production'];
+                monthEnergy.value = data['month-energy'];
+                todayEnergy.value = data['today-energy'];
+                leftTimeEnergy.value = data['left-time-energy'];
 
 
-        })
+            })
     } catch (error) {
         console.error(error);
     }
-    
+
 }
 
 onMounted(() => {
-    fetchAPI();      
+    fetchAPI();
 })
 
 </script>
@@ -77,16 +77,17 @@ onMounted(() => {
 <style scoped>
 .rectangle-1 {
     display: flex;
-    justify-content: center; 
+    justify-content: center;
     align-items: last baseline;
     width: 100%;
     height: 100%;
     /* background-color: green; */
+
 }
 
 .rectangle-2 {
     display: flex;
-    justify-content: center; 
+    justify-content: center;
     width: 100%;
     height: 100%;
     /* background-color: green; */
@@ -101,6 +102,12 @@ onMounted(() => {
     padding: 8px;
     border-radius: 5px;
     outline: 2px solid rgb(119, 62, 1);
+    -webkit-box-shadow: 5px 5px 7px 0px rgba(0, 0, 0, 0.6);
+    box-shadow: 5px 5px 7px 0px rgba(0, 0, 0, 0.6);
+}
+
+.container:hover{
+    cursor: default;
 }
 
 .title-container {
@@ -111,8 +118,9 @@ onMounted(() => {
 }
 
 .title {
-    color: rgb(0, 0, 0);
+    color: rgb(85, 85, 85);
     font-size: 18px;
+    font-style: italic;
 }
 
 .api-container {
@@ -124,16 +132,18 @@ onMounted(() => {
     font-size: 35px;
 }
 
-@media only screen and (max-width: 950px){
-    .rectangle-1{
+
+
+@media only screen and (max-width: 950px) {
+    .rectangle-1 {
         align-items: last baseline;
     }
 
-    .container{
-        height: 100%;       
+    .container {
+        height: 100%;
     }
 
-    .api-container{
+    .api-container {
         font-size: 20px;
     }
 }
