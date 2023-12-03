@@ -104,6 +104,7 @@ onMounted(() => {
 .col-1 {
     width: 35%;
     height: 100%;
+    font-size: 15px;
 }
 
 .col-2 {
@@ -138,14 +139,17 @@ onMounted(() => {
     width: 100%;
 }
 
-.counter {
-  display: flex;
-}
-
 .digit {
   padding: 10px;
   border: 1px solid #ccc;
-  margin-right: 5px;
+  margin-right: 3px;
+  font-size: 12px;
 }
+
+@media only screen and (max-width: 950px){ 
+    .weather-rectangle{
+        padding: 10px;
+    }
+  }
 
 </style>

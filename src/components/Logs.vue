@@ -17,8 +17,22 @@ function fetchAPI() {
 
 }
 
+const logTypeClass = (type) => {
+  switch (type) {
+    case 'info':
+      return 'info';
+    case 'warning':
+      return 'warning';
+    case 'error':
+      return 'error';
+    default:
+      return ''; 
+  }
+};
+
 onMounted(() =>{
     fetchAPI();
+    logTypeClass(type);
 });
 </script>
 
@@ -27,9 +41,10 @@ onMounted(() =>{
         <div class="title-row">
             <h1 class="title">Logs</h1>
         </div>
-        <div class="row" v-for="(log, index) in logs" :key="index" >
-            <div class="col-1"> {{ log.date }}</div>
-            <div class="col-2">{{ log.text }}</div>
+        <div class="row" v-for="(log, index) in logs" :key="index" :class="logTypeClass(log.type)" >
+            <div class="col-1"><h6 class="log-date">{{ log.date }}</h6> </div>
+            <span class="line">|</span>
+            <div class="col-2"><h4 class="log-text">{{ log.text }}</h4></div>
         </div>
     </div>
 </template>
@@ -38,14 +53,16 @@ onMounted(() =>{
 .log-rectangle {
     height: 45%;
     width: 100%;
-    background-color: rgb(255, 0, 64);
+    background-color: #df816ca8;
+    color: rgb(0, 0, 0);
     padding: 5px;
+    border-radius: 10px;
 }
 
 .title-row {
     display: flex;
     justify-content: center;
-    align-items: center;
+    font-size: 14px;
 }
 
 .row {
@@ -57,16 +74,43 @@ onMounted(() =>{
 
 .col-1 {
     text-align: center;
-    width: 30%;
-    padding: 3px;
-    border: 1px solid black;
+    width: 20%;
     font-size: 15px;
 }
 
 .col-2 {
-    width: 70%;
-    padding: 3px;
-    border: 1px solid black;
-    font-size: 15px;
+    width: 80%;
+    font-size: 13px;
+    margin-left: 5px;
+}
+
+.info{
+    color: greenyellow;
+}
+
+.error{
+    color: rgb(255, 0, 0)
+}
+
+.warning{
+    color: yellow;
+}
+
+.log-date{
+    font-size: 11px;
+}
+
+.log-text{
+    font-size: 14px;
+}
+
+.log-date, .line, .log-text{
+    text-shadow: #000000 1px 1px 0;
+}
+
+@media only screen and (max-width: 950px){
+    .log-rectangle{
+        font-size: 10px;
+    }
 }
 </style>

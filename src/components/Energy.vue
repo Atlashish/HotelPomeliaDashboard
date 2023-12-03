@@ -95,7 +95,7 @@ onMounted(() => {
 .container {
     display: flex;
     flex-direction: column;
-    background-color: wheat;
+    background-color: rgba(245, 222, 179, 0.719);
     width: 100%;
     height: 80%;
     padding: 8px;
@@ -122,5 +122,19 @@ onMounted(() => {
     width: 100%;
     height: 80%;
     font-size: 35px;
+}
+
+@media only screen and (max-width: 950px){
+    .rectangle-1{
+        align-items: last baseline;
+    }
+
+    .container{
+        height: 100%;       
+    }
+
+    .api-container{
+        font-size: 20px;
+    }
 }
 </style>
