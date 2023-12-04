@@ -175,8 +175,34 @@ onMounted(() => {
         padding: 10px;
     }
 
+    .weather-icon {
+    width: 70px;
+    margin-bottom: 20px;
+}
+
+.col-1{
+    width: 40%;
+}
+
+.weather-temperature {
+    font-size: 30px;
+}
+
+.weather-city {
+    font-size: 15px;
+}
+
+#humidity {
+    font-size: 10px;
+}
+
+#wind {
+    font-size: 10px;
+}
+
     .digit {
         font-size: 8px;
+        padding: 5px;
     }
 }
 </style>

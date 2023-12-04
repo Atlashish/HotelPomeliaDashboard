@@ -145,7 +145,7 @@ header {
 
  .left-side{
     width: 80%;
-    height: 60vh;
+    height: 50vh;
  }
 
  .right-side{

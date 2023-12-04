@@ -107,5 +107,13 @@ const logTypeClass = (type) => {
     .log-rectangle{
         font-size: 10px;
     }
+
+    .log-date{
+        font-size: 8px;
+    }
+
+    .log-text{
+        font-size: 10px;
+    }
 }
 </style>
