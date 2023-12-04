@@ -1,22 +1,24 @@
 <script setup>
 import { ref, onMounted } from 'vue';
 
-const logs = ref('');
+// Declare a reactive reference for logs as an empty array
+const logs = ref([]);
 
 
+// Function to make the API call and update the logs
 function fetchAPI() {
-    try {
         fetch('https://ott-fogliata.github.io/vuejs-s2i-repository/solar-panels.json#')
             .then(response => response.json())
             .then(data => {
                 logs.value = data.logs
             })
-    } catch (error) {
+     .catch (error => {
         console.error(error);
-    }
+    });
 
 }
 
+// Function to determine the CSS class based on the log type
 const logTypeClass = (type) => {
   switch (type) {
     case 'info':
@@ -30,9 +32,9 @@ const logTypeClass = (type) => {
   }
 };
 
+// Called when the component is mounted to perform initialization
 onMounted(() =>{
     fetchAPI();
-    logTypeClass();
 });
 </script>
 
@@ -41,6 +43,7 @@ onMounted(() =>{
         <div class="title-row">
             <h1 class="title">Logs</h1>
         </div>
+        <!-- Iterate over logs and display each log in a row -->
         <div class="row" v-for="(log, index) in logs" :key="index" :class="logTypeClass(log.type)" >
             <div class="col-1"><h6 class="log-date">{{ log.date }}</h6> </div>
             <span class="line">|</span>

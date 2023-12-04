@@ -1,4 +1,5 @@
 <script setup>
+// Import the components that will be used in the main component
 import Weather from './components/Weather.vue';
 import Energy from './components/Energy.vue';
 import Logs from './components/Logs.vue';
@@ -6,8 +7,8 @@ import Logs from './components/Logs.vue';
 </script>
 
 <template>
-  <body>
-
+ <body>
+    <!-- Define the header of the page -->
     <header>
       <div class="logo-container">
         <img id="logo" src="./assets/img/Logo.png" alt="logo" />
@@ -15,6 +16,7 @@ import Logs from './components/Logs.vue';
       </div>
     </header>
 
+    <!-- Define the main content of the page -->
     <main>
       <div class="main-content">
         <div class="left-side">
@@ -28,100 +30,95 @@ import Logs from './components/Logs.vue';
       </div>
     </main>
 
-
-  </body>
+ </body>
 </template>
 
 <style scoped>
-
-
+/* Set the background image of the body and size it to cover the entire page */
 body {
-  background-image: url('./assets/img/pexels-ákos-szabó-440731.jpg');
-  background-size: cover;
+ background-image: url('./assets/img/pexels-ákos-szabó-440731.jpg');
+ background-size: cover;
 }
 
+/* Set the height, background color, and display properties of the header */
 header {
-  height: 7vh;
-  background-color: rgba(18, 185, 0, 0.523);
+ height: 7vh;
+ background-color: rgba(18, 185, 0, 0.523);
 }
 
+/* Style the logo and the hotel name */
 #pomelia{
-  font-family: 'Ephesis', cursive;
+ font-family: 'Ephesis', cursive;
 }
-
 
 .logo-container {
-  height: 100%;
-  display: flex;
-  justify-content: center;
-  align-items: center;
+ height: 100%;
+ display: flex;
+ justify-content: center;
+ align-items: center;
 }
 
 #logo {
-  width: 45px;
-  margin-right: 5px;
+ width: 45px;
+ margin-right: 5px;
 }
 
 #logo-text {
-  color: white;
-  font-size: 25px;
+ color: white;
+ font-size: 25px;
 }
 
 #logo-text span {
-  font-size: 18px;
+ font-size: 18px;
 }
 
+/* Set the display properties of the main content and style the left and right sides */
 .main-content {
-  height: 93vh;
-  display: flex;
-  justify-content: space-evenly;
-  align-items: center;
-  padding: 20px;
+ height: 93vh;
+ display: flex;
+ justify-content: space-evenly;
+ align-items: center;
+ padding: 20px;
 }
 
 .left-side {
-  display: grid;
-  grid-template-columns: repeat(2, 1fr);
-  grid-gap: 10px;
-  height: 83vh;
-  width: 850px;
-  padding: 10px;
-  /* background-color: rgba(255, 255, 255, 0.567); */
+ display: grid;
+ grid-template-columns: repeat(2, 1fr);
+ grid-gap: 10px;
+ height: 83vh;
+ width: 850px;
+ padding: 10px;
 }
-
 
 .right-side {
-  display: flex;
-  flex-direction: column;
-  justify-content: space-evenly;
-  align-items :center;
-
-  height: 83vh;
-  width: 560px;
-  /* background-color: rgba(165, 165, 169, 0.488); */
+ display: flex;
+ flex-direction: column;
+ justify-content: space-evenly;
+ align-items :center;
+ height: 83vh;
+ width: 560px;
 }
 
+/* Define the media query for screens with a maximum width of 950px */
 @media only screen and (max-width: 950px){
-
-  body{
+ body{
     background-image: none;
     background-color: #638fdc;
     height: 100%;
-  }
-  .main-content{
+ }
+ .main-content{
     flex-direction: column;
     height: 100%;
-  }
+ }
 
-  .left-side{
+ .left-side{
     width: 80%;
     height: 60vh;
-  }
+ }
 
-  .right-side{
+ .right-side{
     width: 80%;
-  }
-   }
-
+ }
+}
 
 </style>

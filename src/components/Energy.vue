@@ -7,11 +7,13 @@ const monthEnergy = ref('');
 const todayEnergy = ref('');
 const leftTimeEnergy = ref('');
 
+// Function to fetch data from the API
 function fetchAPI() {
-    try {
         fetch('https://ott-fogliata.github.io/vuejs-s2i-repository/solar-panels.json#')
             .then(response => response.json())
             .then(data => {
+
+                // Updating reactive variables with the fetched data
                 powerProduction.value = data['power-production'];
                 monthEnergy.value = data['month-energy'];
                 todayEnergy.value = data['today-energy'];
@@ -19,9 +21,9 @@ function fetchAPI() {
 
 
             })
-    } catch (error) {
+    .catch (error => {
         console.error(error);
-    }
+    });
 
 }
 
@@ -81,7 +83,6 @@ onMounted(() => {
     align-items: last baseline;
     width: 100%;
     height: 100%;
-    /* background-color: green; */
 
 }
 
@@ -90,7 +91,6 @@ onMounted(() => {
     justify-content: center;
     width: 100%;
     height: 100%;
-    /* background-color: green; */
 }
 
 .container {
@@ -131,6 +131,8 @@ onMounted(() => {
     height: 80%;
     font-size: 35px;
 }
+
+
 
 
 
