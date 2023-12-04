@@ -118,13 +118,13 @@ const props = defineProps({
 @media only screen and (max-width: 950px) {
     .rectangle-1 {
         align-items: last baseline;
-        width: 150px;
+        width: 100%;
         height: 150px;
     }
 
     .rectangle-2 {
         align-items: last baseline;
-        width: 150px;
+        width: 100%;
         height: 150px;
     }
     
