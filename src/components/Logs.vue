@@ -1,22 +1,9 @@
 <script setup>
-import { ref, onMounted } from 'vue';
+import { defineProps } from 'vue';
 
-// Declare a reactive reference for logs as an empty array
-const logs = ref([]);
-
-
-// Function to make the API call and update the logs
-function fetchAPI() {
-        fetch('https://ott-fogliata.github.io/vuejs-s2i-repository/solar-panels.json#')
-            .then(response => response.json())
-            .then(data => {
-                logs.value = data.logs
-            })
-     .catch (error => {
-        console.error(error);
-    });
-
-}
+const props = defineProps({
+    logs: Array
+})
 
 // Function to determine the CSS class based on the log type
 const logTypeClass = (type) => {
@@ -32,10 +19,6 @@ const logTypeClass = (type) => {
   }
 };
 
-// Called when the component is mounted to perform initialization
-onMounted(() =>{
-    fetchAPI();
-});
 </script>
 
 <template>

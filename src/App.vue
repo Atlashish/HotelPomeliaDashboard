@@ -1,8 +1,40 @@
 <script setup>
+
+import { ref, onMounted } from 'vue';
+
 // Import the components that will be used in the main component
 import Weather from './components/Weather.vue';
 import Energy from './components/Energy.vue';
 import Logs from './components/Logs.vue';
+
+const powerProduction = ref(0);
+const monthEnergy = ref(0);
+const todayEnergy = ref(0);
+const leftTimeEnergy = ref(0);
+const logs = ref([]);
+
+// Function to fetch data from the API
+function fetchAPI() {
+        fetch('https://ott-fogliata.github.io/vuejs-s2i-repository/solar-panels.json#')
+            .then(response => response.json())
+            .then(data => {
+
+                // Updating reactive variables with the fetched data
+                powerProduction.value = data['power-production'];
+                monthEnergy.value = data['month-energy'];
+                todayEnergy.value = data['today-energy'];
+                leftTimeEnergy.value = data['left-time-energy'];
+                logs.value = data.logs;
+
+            })
+    .catch (error => {
+        console.error(error);
+    });
+  }
+
+  onMounted(() => {
+    fetchAPI();
+})
 
 </script>
 
@@ -20,12 +52,12 @@ import Logs from './components/Logs.vue';
     <main>
       <div class="main-content">
         <div class="left-side">
-          <Energy />
+          <Energy :powerProduction="powerProduction" :monthEnergy="monthEnergy" :todayEnergy="todayEnergy" :leftTimeEnergy="leftTimeEnergy"/>
         </div>
 
         <div class="right-side">
           <Weather />
-          <Logs />
+          <Logs :logs="logs"/>
         </div>
       </div>
     </main>

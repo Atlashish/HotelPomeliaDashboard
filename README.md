@@ -1,29 +1,21 @@
-# vue-project
+# Hotel Pomelia | Dashboard 🏨
 
-This template should help get you started developing with Vue 3 in Vite.
+![banner](./src/assets/img/Screenshot%202023-12-04%20110510.png)
 
-## Recommended IDE Setup
+# Description 📚
 
-[VSCode](https://code.visualstudio.com/) + [Volar](https://marketplace.visualstudio.com/items?itemName=Vue.volar) (and disable Vetur) + [TypeScript Vue Plugin (Volar)](https://marketplace.visualstudio.com/items?itemName=Vue.vscode-typescript-vue-plugin).
+The site shows the dashboard of the eco-hotel Pomelia. On the left we find four boxes that describe the consumption of the hotel's solar panels; on the right, however, we find: a weather section of the weather in Rome, where the hotel is located, with underneath a counter that describes the kWh of the current day, and solar panel system logs.
 
-## Customize configuration
+# Vue.js 🟢
 
-See [Vite Configuration Reference](https://vitejs.dev/config/).
+The website was programmed using Vue.js, a javascript framework used for creating user interfaces and single-page applications.
+The program has been divided into several child components and the parent App.vue component.
 
-## Project Setup
+# Links 🔗
 
-```sh
-npm install
-```
+For my Github Work----> https://github.com/Atlashish/HotelPomeliaDashboard
+For my Work Deployed------> https://hotelpomelia-dashboard.netlify.app/
 
-### Compile and Hot-Reload for Development
+# Author 🖋
 
-```sh
-npm run dev
-```
-
-### Compile and Minify for Production
-
-```sh
-npm run build
-```
+- [@Atlashish](https://github.com/Atlashish/)

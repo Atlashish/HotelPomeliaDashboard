@@ -14,30 +14,28 @@ const counter = ref(getSecondsInDay());
 
 // Function to fetch weather data from the API
 function fetchApi(API) {
-        fetch(API)
-            .then(response => response.json())
-            .then(data => {
+    fetch(API)
+        .then(response => response.json())
+        .then(data => {
 
-                humidity.value = data.current.relative_humidity_2m
-                wind.value = data.current.wind_speed_10m
-                temperature.value = data.current.temperature_2m
+            humidity.value = data.current.relative_humidity_2m
+            wind.value = data.current.wind_speed_10m
+            temperature.value = data.current.temperature_2m
 
-                day.value = data.current.is_day
-                clouds.value = data.current.cloud_cover
-                rain.value = data.current.rain
+            day.value = data.current.is_day
+            clouds.value = data.current.cloud_cover
+            rain.value = data.current.rain
 
-
-
-            })
-     .catch (error => {
-        console.error(error);
-    });
+        })
+        .catch(error => {
+            console.error(error);
+        });
 };
 
 // Function to get the total seconds in the current day
 function getSecondsInDay() {
-  const now = new Date();
-  return now.getHours() * 3600 + now.getMinutes() * 60 + now.getSeconds();
+    const now = new Date();
+    return now.getHours() * 3600 + now.getMinutes() * 60 + now.getSeconds();
 }
 
 // Computed property to get individual digits for the counter
@@ -50,11 +48,11 @@ const counterDigits = computed(() => {
 onMounted(() => {
     fetchApi(urlAPI);
     setInterval(() => {
-    counter.value++;
-    if (counter.value >= 86400) {  
-      counter.value = 0;
-    }
-  }, 1000);
+        counter.value++;
+        if (counter.value >= 86400) {
+            counter.value = 0;
+        }
+    }, 1000);
 })
 
 </script>
@@ -105,7 +103,8 @@ onMounted(() => {
     -webkit-box-shadow: 5px 5px 7px 0px rgba(0, 0, 0, 0.6);
     box-shadow: 5px 5px 7px 0px rgba(0, 0, 0, 0.6);
 }
-.weather-rectangle:hover{
+
+.weather-rectangle:hover {
     cursor: default;
 }
 
@@ -119,7 +118,7 @@ onMounted(() => {
     width: 35%;
     height: 100%;
     font-size: 13px;
-    
+
 }
 
 .col-2 {
@@ -132,12 +131,12 @@ onMounted(() => {
     margin-bottom: 10px;
 }
 
-#humidity{
+#humidity {
     color: rgb(0, 0, 0);
     font-style: italic;
 }
 
-#wind{
+#wind {
     color: rgb(0, 0, 0);
     font-style: italic;
 }
@@ -165,22 +164,19 @@ onMounted(() => {
 }
 
 .digit {
-  padding: 10px;
-  border: 1px solid #ccc;
-  margin-right: 3px;
-  font-size: 12px;
+    padding: 10px;
+    border: 1px solid #ccc;
+    margin-right: 3px;
+    font-size: 12px;
 }
 
-@media only screen and (max-width: 950px){ 
-    .weather-rectangle{
+@media only screen and (max-width: 950px) {
+    .weather-rectangle {
         padding: 10px;
     }
 
-    .digit{
+    .digit {
         font-size: 8px;
     }
-  }
-
-  
-
+}
 </style>
