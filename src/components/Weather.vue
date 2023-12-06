@@ -1,9 +1,9 @@
 <script setup>
+import Api from './Api.vue';
 import { ref, onMounted, computed } from 'vue';
 
 // API URL for weather data
 const urlAPI = "https://api.open-meteo.com/v1/forecast?latitude=41.8919&longitude=12.5113&current=temperature_2m,relative_humidity_2m,is_day,rain,cloud_cover,wind_speed_10m&hourly=temperature_2m&timezone=auto";
-
 const temperature = ref('');
 const day = ref('');
 const rain = ref('');
@@ -12,26 +12,17 @@ const humidity = ref('');
 const wind = ref('');
 const counter = ref(getSecondsInDay());
 
-// Function to fetch weather data from the API
-function fetchApi(API) {
-    fetch(API)
-        .then(response => response.json())
-        .then(data => {
+function weatherData(data) {
 
-            humidity.value = data.current.relative_humidity_2m
-            wind.value = data.current.wind_speed_10m
-            temperature.value = data.current.temperature_2m
+    humidity.value = data.current.relative_humidity_2m
+    wind.value = data.current.wind_speed_10m
+    temperature.value = data.current.temperature_2m
 
-            day.value = data.current.is_day
-            clouds.value = data.current.cloud_cover
-            rain.value = data.current.rain
+    day.value = data.current.is_day
+    clouds.value = data.current.cloud_cover
+    rain.value = data.current.rain
 
-        })
-        .catch(error => {
-            console.error(error);
-        });
-};
-
+}
 // Function to get the total seconds in the current day
 function getSecondsInDay() {
     const now = new Date();
@@ -46,7 +37,6 @@ const counterDigits = computed(() => {
 
 // Fetch API data on component mount and update the counter every second
 onMounted(() => {
-    fetchApi(urlAPI);
     setInterval(() => {
         counter.value++;
         if (counter.value >= 86400) {
@@ -58,6 +48,7 @@ onMounted(() => {
 </script>
 
 <template>
+    <Api :url="urlAPI" :callback="weatherData" />
     <!-- Weather component template -->
     <div class="weather-rectangle">
         <div class="weather-rome">
@@ -102,6 +93,8 @@ onMounted(() => {
     border: 2px solid rgb(53, 53, 53);
     -webkit-box-shadow: 5px 5px 7px 0px rgba(0, 0, 0, 0.6);
     box-shadow: 5px 5px 7px 0px rgba(0, 0, 0, 0.6);
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
 }
 
 .weather-rectangle:hover {
@@ -176,29 +169,29 @@ onMounted(() => {
     }
 
     .weather-icon {
-    width: 70px;
-    margin-bottom: 20px;
-}
+        width: 70px;
+        margin-bottom: 20px;
+    }
 
-.col-1{
-    width: 40%;
-}
+    .col-1 {
+        width: 40%;
+    }
 
-.weather-temperature {
-    font-size: 30px;
-}
+    .weather-temperature {
+        font-size: 30px;
+    }
 
-.weather-city {
-    font-size: 15px;
-}
+    .weather-city {
+        font-size: 15px;
+    }
 
-#humidity {
-    font-size: 10px;
-}
+    #humidity {
+        font-size: 10px;
+    }
 
-#wind {
-    font-size: 10px;
-}
+    #wind {
+        font-size: 10px;
+    }
 
     .digit {
         font-size: 8px;

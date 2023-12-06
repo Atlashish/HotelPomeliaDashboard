@@ -1,9 +1,14 @@
 <script setup>
-import { defineProps } from 'vue';
 
-const props = defineProps({
-    logs: Array
-})
+import Api from './Api.vue';
+import { ref } from 'vue';
+
+const urlAPI = 'https://ott-fogliata.github.io/vuejs-s2i-repository/solar-panels.json#'
+const logs = ref([]);
+
+function logsData(data){
+    logs.value = data.logs;
+}
 
 // Function to determine the CSS class based on the log type
 const logTypeClass = (type) => {
@@ -22,6 +27,7 @@ const logTypeClass = (type) => {
 </script>
 
 <template>
+    <Api :url="urlAPI" :callback="logsData"/>
     <div class="log-rectangle">
         <div class="title-row">
             <h1 class="title">Logs</h1>
@@ -46,6 +52,8 @@ const logTypeClass = (type) => {
     border: 2px solid rgb(149, 2, 2);
     -webkit-box-shadow: 5px 5px 7px 0px rgba(0, 0, 0, 0.6);
     box-shadow: 5px 5px 7px 0px rgba(0, 0, 0, 0.6);
+    backdrop-filter: blur( 10px );
+    -webkit-backdrop-filter: blur( 10px );
 }
 
 .log-rectangle{
