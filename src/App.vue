@@ -26,7 +26,7 @@ import Logs from './components/Logs.vue';
 
         <div class="right-side">
           <Weather />
-          <Logs :logs="logs" />
+          <Logs />
         </div>
       </div>
     </main>

@@ -1,6 +1,6 @@
 <script setup>
 
-import Api from './Api.vue';
+import { fetchAPI } from '../main';
 import Singlequad from './Singlequad.vue';
 
 import { ref } from 'vue';
@@ -18,11 +18,12 @@ function energyData(data) {
     leftTimeEnergy.value = data['left-time-energy'];
 }
 
+fetchAPI(urlAPI, energyData);
+
 
 </script>
 
 <template>
-    <Api :url="urlAPI" :callback="energyData"/>
     <Singlequad :value="powerProduction"/>
     <Singlequad :value="monthEnergy"/>
     <Singlequad :value="todayEnergy"/>

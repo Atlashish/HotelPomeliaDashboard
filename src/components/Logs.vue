@@ -1,6 +1,6 @@
 <script setup>
 
-import Api from './Api.vue';
+import { fetchAPI } from '../main';
 import { ref } from 'vue';
 
 const urlAPI = 'https://ott-fogliata.github.io/vuejs-s2i-repository/solar-panels.json#'
@@ -9,6 +9,8 @@ const logs = ref([]);
 function logsData(data){
     logs.value = data.logs;
 }
+
+fetchAPI(urlAPI, logsData);
 
 // Function to determine the CSS class based on the log type
 const logTypeClass = (type) => {
@@ -27,7 +29,7 @@ const logTypeClass = (type) => {
 </script>
 
 <template>
-    <Api :url="urlAPI" :callback="logsData"/>
+    
     <div class="log-rectangle">
         <div class="title-row">
             <h1 class="title">Logs</h1>

@@ -1,5 +1,6 @@
 <script setup>
-import Api from './Api.vue';
+
+import { fetchAPI } from '../main';
 import { ref, onMounted, computed } from 'vue';
 
 // API URL for weather data
@@ -23,6 +24,8 @@ function weatherData(data) {
     rain.value = data.current.rain
 
 }
+
+fetchAPI(urlAPI, weatherData);
 // Function to get the total seconds in the current day
 function getSecondsInDay() {
     const now = new Date();
@@ -48,7 +51,7 @@ onMounted(() => {
 </script>
 
 <template>
-    <Api :url="urlAPI" :callback="weatherData" />
+
     <!-- Weather component template -->
     <div class="weather-rectangle">
         <div class="weather-rome">
