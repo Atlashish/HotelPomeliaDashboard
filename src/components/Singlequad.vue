@@ -3,6 +3,7 @@
 import { defineProps } from 'vue';
 
 const props = defineProps({
+    title: String,
     value: Number
 });
 
@@ -13,7 +14,7 @@ const props = defineProps({
 <div class="rectangle">
         <div class="container">
             <div class="title-container">
-                <h2 class="title">Power Production</h2>
+                <h2 class="title">{{ title }}</h2>
             </div>
             <div class="api-container">
                 <h1 class="api">{{ value }} kW</h1>

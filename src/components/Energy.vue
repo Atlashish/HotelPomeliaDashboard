@@ -23,11 +23,11 @@ fetchAPI(urlAPI, energyData);
 
 </script>
 
-<template>
-    <Singlequad :value="powerProduction"/>
-    <Singlequad :value="monthEnergy"/>
-    <Singlequad :value="todayEnergy"/>
-    <Singlequad :value="leftTimeEnergy"/>
+<template> 
+    <Singlequad :title="'Power Production'" :value="powerProduction"/>
+    <Singlequad :title="'Month Energy'" :value="monthEnergy"/>
+    <Singlequad :title="'Today Energy'" :value="todayEnergy"/>
+    <Singlequad :title="'Left Time Energy'" :value="leftTimeEnergy"/>
 </template>
 
 <style scoped></style>
